@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 //@Getter
 //@AllArgsConstructor
 //@NoArgsConstructor lub samo @Data
@@ -13,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class TrelloBoardDto {
     private String name;
     private String id;
+    private List<TrelloListDto> lists;
 
 
 
