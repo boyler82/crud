@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/tasks")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+@CrossOrigin("*")
 public class TaskController {
 
     private final DbService service;
@@ -51,6 +51,4 @@ public class TaskController {
         service.saveTask(task);
         return ResponseEntity.ok().build();
     }
-
-
 }
