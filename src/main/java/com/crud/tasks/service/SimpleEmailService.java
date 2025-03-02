@@ -13,7 +13,6 @@ import java.util.Optional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-
 public class SimpleEmailService {
 
     private final JavaMailSender javaMailSender;
@@ -35,12 +34,11 @@ public class SimpleEmailService {
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
+
         Optional.ofNullable(mail.getToCc())
-                .filter(ccList -> !ccList.isEmpty())
-                .ifPresent(ccList -> mailMessage.setCc(ccList.toArray(new String[0])));
+                .filter(cc -> !cc.isBlank())
+                .ifPresent(mailMessage::setCc);
 
         return mailMessage;
     }
-
-
 }

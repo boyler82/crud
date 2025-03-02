@@ -9,9 +9,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -29,17 +26,17 @@ class SimpleEmailServiceTest {
         //Given
        Mail mailWithCC = Mail.builder()
                .mailTo("test@op.pl")
-               .toCc(Arrays.asList("test@op.pl", "test2@op.pl"))
                .subject("test")
                .message("test")
+               .toCc("test@op.pl")
                .build();
 
 
         SimpleMailMessage expectedMessage = new SimpleMailMessage();
         expectedMessage.setTo("test@op.pl");
-        expectedMessage.setCc(new String[]{"test@op.pl", "test2@op.pl"});
         expectedMessage.setSubject("test");
         expectedMessage.setText("test");
+        expectedMessage.setCc("test@op.pl");
 
         // When
         simpleEmailService.send(mailWithCC);
@@ -55,6 +52,7 @@ class SimpleEmailServiceTest {
                 .mailTo("test@op.pl")
                 .subject("test")
                 .message("test")
+                .toCc(null)
                 .build();
 
 
@@ -69,5 +67,4 @@ class SimpleEmailServiceTest {
         // Then
         verify(javaMailSender, times(1)).send(expectedMessage);
     }
-
 }
