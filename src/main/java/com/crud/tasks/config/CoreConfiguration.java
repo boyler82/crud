@@ -12,3 +12,6 @@ public class CoreConfiguration {
         return new RestTemplate();
     }
 }
+
+
+//nie wiem po co jest ta klasa sprawdzic w kusie kodilla

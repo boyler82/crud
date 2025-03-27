@@ -23,16 +23,16 @@ public class TaskController {
 
     @GetMapping
     public ResponseEntity<List<TaskDto>> getTasks() {
-        List<Task> tasks = service.getAllTasks();
-        return ResponseEntity.ok(taskMapper.mapToTaskDtoList(tasks));
+//        List<Task> tasks = service.getAllTasks();
+        return ResponseEntity.ok(taskMapper.mapToTaskDtoList(service.getAllTasks()));
     }
 
-    @GetMapping(value = "{taskId}")
+    @GetMapping(value = "/{taskId}")
     public ResponseEntity<TaskDto> getTask(@PathVariable Long taskId) throws TaskNotFoundException {
         return ResponseEntity.ok(taskMapper.mapToTaskDto(service.getTask(taskId)));
     }
 
-    @DeleteMapping("/{taskId}")
+    @DeleteMapping(value="/{taskId}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long taskId) {
         service.deleteTask(taskId);
         return ResponseEntity.ok().build();
