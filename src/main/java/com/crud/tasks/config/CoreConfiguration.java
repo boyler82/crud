@@ -13,5 +13,4 @@ public class CoreConfiguration {
     }
 }
 
-
 //nie wiem po co jest ta klasa sprawdzic w kusie kodilla

@@ -23,6 +23,7 @@ public class TrelloService {
     private final AdminConfig adminConfig;
 
     public List<TrelloBoardDto> fetchTrelloBoards() {
+
         return trelloClient.getTrelloBoards();
     }
 
